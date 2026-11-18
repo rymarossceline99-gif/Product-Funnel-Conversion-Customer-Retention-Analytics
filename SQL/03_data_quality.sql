@@ -1,0 +1,27 @@
+
+-- PROJECT: Product Funnel, Conversion & Customer Retention Analytics
+-- ANALYSIS 03: Data Quality Analysis
+-- OBJECTIVE: Check missing values and important data fields.
+
+SELECT
+    COUNT(*) AS total_events,
+
+    COUNTIF(user_pseudo_id IS NULL) AS missing_user_ids,
+
+    COUNTIF(event_timestamp IS NULL) AS missing_timestamps,
+
+    COUNTIF(event_name IS NULL) AS missing_event_names,
+
+    COUNTIF(event_name = 'purchase') AS purchase_events,
+
+    COUNTIF(
+        event_name = 'purchase'
+        AND ecommerce.purchase_revenue_in_usd IS NOT NULL
+    ) AS purchases_with_revenue,
+
+    COUNTIF(traffic_source.source IS NOT NULL) AS events_with_source,
+
+    COUNTIF(device.category IS NOT NULL) AS events_with_device
+
+FROM
+    `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*`;

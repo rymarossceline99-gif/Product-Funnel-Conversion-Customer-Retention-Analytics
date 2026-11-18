@@ -1,4 +1,3 @@
-
 -- PROJECT: Product Funnel, Conversion & Customer Retention Analytics
 -- ANALYSIS 02: Dataset Overview
 -- OBJECTIVE: Understand the dataset's date range, size and user count.
